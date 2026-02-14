@@ -1,370 +1,32 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="bn">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>বিলিং সফটওয়্যার - আপনার কোম্পানি</title>
-    <style>
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-        }
-
-        body {
-            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
-            min-height: 100vh;
-            padding: 20px;
-        }
-
-        /* Main Container */
-        .container {
-            max-width: 1400px;
-            margin: 0 auto;
-        }
-
-        /* Header Section with Company Logo and Name */
-        .header {
-            background: white;
-            border-radius: 20px;
-            padding: 20px 30px;
-            margin-bottom: 25px;
-            box-shadow: 0 10px 30px rgba(0,0,0,0.2);
-            display: flex;
-            align-items: center;
-            justify-content: space-between;
-            flex-wrap: wrap;
-            gap: 20px;
-        }
-
-        .company-info {
-            display: flex;
-            align-items: center;
-            gap: 20px;
-        }
-
-        .logo-container {
-            width: 70px;
-            height: 70px;
-            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
-            border-radius: 15px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            color: white;
-            font-size: 30px;
-            font-weight: bold;
-        }
-
-        .company-details h1 {
-            color: #333;
-            font-size: 28px;
-            margin-bottom: 5px;
-        }
-
-        .company-details p {
-            color: #666;
-            font-size: 14px;
-        }
-
-        .date-time {
-            background: #f5f5f5;
-            padding: 10px 20px;
-            border-radius: 12px;
-            text-align: center;
-        }
-
-        .date-time .date {
-            color: #333;
-            font-weight: bold;
-            font-size: 16px;
-        }
-
-        .date-time .time {
-            color: #667eea;
-            font-size: 20px;
-            font-weight: bold;
-            margin-top: 5px;
-        }
-
-        /* Main Content Grid */
-        .main-content {
-            display: grid;
-            grid-template-columns: 1fr 1.2fr;
-            gap: 25px;
-            margin-bottom: 25px;
-        }
-
-        /* Product Management Section */
-        .product-section {
-            background: white;
-            border-radius: 20px;
-            padding: 25px;
-            box-shadow: 0 10px 30px rgba(0,0,0,0.1);
-        }
-
-        .section-title {
-            color: #333;
-            font-size: 22px;
-            margin-bottom: 20px;
-            padding-bottom: 10px;
-            border-bottom: 3px solid #667eea;
-            display: inline-block;
-        }
-
-        .input-group {
-            margin-bottom: 20px;
-        }
-
-        .input-group label {
-            display: block;
-            color: #555;
-            margin-bottom: 8px;
-            font-weight: 500;
-        }
-
-        .input-group input {
-            width: 100%;
-            padding: 12px 15px;
-            border: 2px solid #e0e0e0;
-            border-radius: 12px;
-            font-size: 15px;
-            transition: all 0.3s;
-        }
-
-        .input-group input:focus {
-            outline: none;
-            border-color: #667eea;
-            box-shadow: 0 0 0 3px rgba(102, 126, 234, 0.1);
-        }
-
-        .add-btn {
-            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
-            color: white;
-            border: none;
-            padding: 14px 30px;
-            border-radius: 12px;
-            font-size: 16px;
-            font-weight: 600;
-            cursor: pointer;
-            width: 100%;
-            transition: transform 0.3s, box-shadow 0.3s;
-        }
-
-        .add-btn:hover {
-            transform: translateY(-2px);
-            box-shadow: 0 10px 25px rgba(102, 126, 234, 0.4);
-        }
-
-        /* Products List */
-        .products-list {
-            margin-top: 30px;
-            max-height: 300px;
-            overflow-y: auto;
-        }
-
-        .product-item {
-            background: #f8f9fa;
-            padding: 15px;
-            border-radius: 12px;
-            margin-bottom: 10px;
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            border-left: 5px solid #667eea;
-            transition: transform 0.2s;
-        }
-
-        .product-item:hover {
-            transform: translateX(5px);
-            background: #f0f2f5;
-        }
-
-        .product-info h4 {
-            color: #333;
-            margin-bottom: 5px;
-        }
-
-        .product-info p {
-            color: #667eea;
-            font-weight: bold;
-            font-size: 18px;
-        }
-
-        .delete-product {
-            background: #ff4757;
-            color: white;
-            border: none;
-            width: 35px;
-            height: 35px;
-            border-radius: 8px;
-            cursor: pointer;
-            font-size: 18px;
-            transition: background 0.3s;
-        }
-
-        .delete-product:hover {
-            background: #ff3838;
-        }
-
-        /* Billing Section */
-        .billing-section {
-            background: white;
-            border-radius: 20px;
-            padding: 25px;
-            box-shadow: 0 10px 30px rgba(0,0,0,0.1);
-        }
-
-        .product-select {
-            width: 100%;
-            padding: 12px 15px;
-            border: 2px solid #e0e0e0;
-            border-radius: 12px;
-            margin-bottom: 15px;
-            font-size: 15px;
-        }
-
-        .bill-btn {
-            background: linear-gradient(135deg, #00b09b, #96c93d);
-            color: white;
-            border: none;
-            padding: 14px 30px;
-            border-radius: 12px;
-            font-size: 16px;
-            font-weight: 600;
-            cursor: pointer;
-            width: 100%;
-            margin-bottom: 20px;
-            transition: transform 0.3s, box-shadow 0.3s;
-        }
-
-        .bill-btn:hover {
-            transform: translateY(-2px);
-            box-shadow: 0 10px 25px rgba(0, 176, 155, 0.4);
-        }
-
-        /* Dashboard */
-        .dashboard {
-            background: white;
-            border-radius: 20px;
-            padding: 25px;
-            box-shadow: 0 10px 30px rgba(0,0,0,0.1);
-        }
-
-        .dashboard h2 {
-            color: #333;
-            margin-bottom: 20px;
-            display: flex;
-            align-items: center;
-            gap: 10px;
-        }
-
-        .stats-container {
-            display: grid;
-            grid-template-columns: repeat(3, 1fr);
-            gap: 20px;
-            margin-bottom: 25px;
-        }
-
-        .stat-card {
-            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
-            padding: 20px;
-            border-radius: 15px;
-            color: white;
-            text-align: center;
-        }
-
-        .stat-card h3 {
-            font-size: 16px;
-            margin-bottom: 10px;
-            opacity: 0.9;
-        }
-
-        .stat-card .stat-value {
-            font-size: 28px;
-            font-weight: bold;
-        }
-
-        .billing-history {
-            max-height: 250px;
-            overflow-y: auto;
-        }
-
-        .bill-item {
-            background: #f8f9fa;
-            padding: 15px;
-            border-radius: 10px;
-            margin-bottom: 10px;
-            display: grid;
-            grid-template-columns: 2fr 1fr 1fr 1fr;
-            gap: 10px;
-            align-items: center;
-        }
-
-        .bill-item .product-name {
-            font-weight: 600;
-            color: #333;
-        }
-
-        .bill-item .price {
-            color: #667eea;
-            font-weight: bold;
-        }
-
-        .bill-item .quantity {
-            color: #666;
-        }
-
-        .bill-item .total {
-            color: #00b09b;
-            font-weight: bold;
-        }
-
-        .bill-item .lave {
-            color: #ff6b6b;
-            font-weight: bold;
-        }
-
-        /* Responsive Design */
-        @media (max-width: 1024px) {
-            .main-content {
-                grid-template-columns: 1fr;
-            }
-            
-            .stats-container {
-                grid-template-columns: repeat(2, 1fr);
-            }
-        }
-
-        @media (max-width: 768px) {
-            .header {
-                flex-direction: column;
-                text-align: center;
-            }
-            
-            .company-info {
-                flex-direction: column;
-            }
-            
-            .stats-container {
-                grid-template-columns: 1fr;
-            }
-            
-            .bill-item {
-                grid-template-columns: 1fr;
-                text-align: center;
-                gap: 5px;
-            }
-        }
-    </style>
+    <title>বিলিং সফটওয়্যার - আপনার ব্যবসার সঙ্গী</title>
+    
+    <!-- SEO Meta Tags -->
+    <meta name="description" content="একটি সম্পূর্ণ ফ্রি বিলিং সফটওয়্যার | প্রোডাক্ট ম্যানেজমেন্ট, বিলিং ও ড্যাশবোর্ড">
+    <meta name="keywords" content="বিলিং সফটওয়্যার, ইনভয়েস সিস্টেম, প্রোডাক্ট ম্যানেজমেন্ট, ফ্রি বিলিং সফটওয়্যার">
+    <meta name="author" content="Your Name">
+    
+    <!-- Open Graph Meta Tags -->
+    <meta property="og:title" content="বিলিং সফটওয়্যার">
+    <meta property="og:description" content="একটি সম্পূর্ণ ফ্রি বিলিং সফটওয়্যার">
+    <meta property="og:type" content="website">
+    
+    <!-- Font Awesome Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    
+    <!-- Custom CSS -->
+    <link rel="stylesheet" href="css/style.css">
 </head>
 <body>
     <div class="container">
         <!-- Header with Company Info -->
         <div class="header">
             <div class="company-info">
-                <div class="logo-container">
+                <div class="logo-container" id="companyLogoContainer">
                     <span id="companyLogo">B</span>
                 </div>
                 <div class="company-details">
@@ -378,45 +40,56 @@
             </div>
         </div>
 
-        <!-- Company Settings (Hidden by default, can be shown with edit button) -->
-        <div style="text-align: right; margin-bottom: 15px;">
-            <button onclick="showCompanySettings()" style="background: white; border: none; padding: 10px 20px; border-radius: 10px; cursor: pointer; box-shadow: 0 5px 15px rgba(0,0,0,0.1);">
-                ⚙️ কোম্পানি সেটিংস
+        <!-- Company Settings Button -->
+        <div class="settings-btn-container">
+            <button onclick="showCompanySettings()" class="settings-btn">
+                <i class="fas fa-cog"></i> কোম্পানি সেটিংস
             </button>
         </div>
 
-        <!-- Company Settings Modal (Simple inline edit) -->
-        <div id="companySettings" style="display: none; background: white; border-radius: 20px; padding: 25px; margin-bottom: 25px; box-shadow: 0 10px 30px rgba(0,0,0,0.1);">
-            <h3 style="margin-bottom: 20px; color: #333;">কোম্পানি তথ্য সম্পাদনা</h3>
-            <div class="input-group">
-                <label>কোম্পানির নাম</label>
-                <input type="text" id="companyNameInput" placeholder="কোম্পানির নাম লিখুন">
+        <!-- Company Settings Modal -->
+        <div id="companySettings" class="settings-modal" style="display: none;">
+            <div class="modal-content">
+                <h3><i class="fas fa-building"></i> কোম্পানি তথ্য সম্পাদনা</h3>
+                <div class="input-group">
+                    <label><i class="fas fa-tag"></i> কোম্পানির নাম</label>
+                    <input type="text" id="companyNameInput" placeholder="কোম্পানির নাম লিখুন">
+                </div>
+                <div class="input-group">
+                    <label><i class="fas fa-font"></i> লোগো টেক্সট</label>
+                    <input type="text" id="companyLogoInput" placeholder="লোগোর জন্য টেক্সট (যেমন: B)">
+                </div>
+                <div class="input-group">
+                    <label><i class="fas fa-quote-right"></i> স্লোগান</label>
+                    <input type="text" id="companySloganInput" placeholder="কোম্পানির স্লোগান">
+                </div>
+                <button onclick="updateCompanyInfo()" class="btn btn-success">
+                    <i class="fas fa-save"></i> আপডেট করুন
+                </button>
+                <button onclick="hideCompanySettings()" class="btn btn-secondary">
+                    <i class="fas fa-times"></i> বন্ধ করুন
+                </button>
             </div>
-            <div class="input-group">
-                <label>লোগো টেক্সট</label>
-                <input type="text" id="companyLogoInput" placeholder="লোগোর জন্য টেক্সট (যেমন: B)">
-            </div>
-            <div class="input-group">
-                <label>স্লোগান</label>
-                <input type="text" id="companySloganInput" placeholder="কোম্পানির স্লোগান">
-            </div>
-            <button onclick="updateCompanyInfo()" class="add-btn" style="background: linear-gradient(135deg, #00b09b, #96c93d);">আপডেট করুন</button>
         </div>
 
-        <!-- Main Content -->
+        <!-- Main Content Grid -->
         <div class="main-content">
-            <!-- Product Management -->
-            <div class="product-section">
-                <h2 class="section-title">📦 প্রোডাক্ট ম্যানেজমেন্ট</h2>
+            <!-- Product Management Section -->
+            <div class="card product-section">
+                <h2 class="section-title">
+                    <i class="fas fa-box"></i> প্রোডাক্ট ম্যানেজমেন্ট
+                </h2>
                 <div class="input-group">
-                    <label>প্রোডাক্টের নাম</label>
+                    <label><i class="fas fa-box-open"></i> প্রোডাক্টের নাম</label>
                     <input type="text" id="productName" placeholder="প্রোডাক্টের নাম লিখুন">
                 </div>
                 <div class="input-group">
-                    <label>প্রাইস (টাকায়)</label>
+                    <label><i class="fas fa-dollar-sign"></i> প্রাইস (টাকায়)</label>
                     <input type="number" id="productPrice" placeholder="মূল্য নির্ধারণ করুন">
                 </div>
-                <button onclick="addProduct()" class="add-btn">➕ প্রোডাক্ট যোগ করুন</button>
+                <button onclick="addProduct()" class="btn btn-primary">
+                    <i class="fas fa-plus-circle"></i> প্রোডাক্ট যোগ করুন
+                </button>
                 
                 <div class="products-list" id="productsList">
                     <!-- Products will be added here dynamically -->
@@ -424,258 +97,792 @@
             </div>
 
             <!-- Billing Section -->
-            <div class="billing-section">
-                <h2 class="section-title">🧾 বিলিং সেকশন</h2>
+            <div class="card billing-section">
+                <h2 class="section-title">
+                    <i class="fas fa-file-invoice"></i> বিলিং সেকশন
+                </h2>
                 <select id="productSelect" class="product-select">
                     <option value="">প্রোডাক্ট নির্বাচন করুন</option>
                 </select>
                 <div class="input-group">
-                    <label>পরিমাণ</label>
+                    <label><i class="fas fa-sort-numeric-up"></i> পরিমাণ</label>
                     <input type="number" id="quantity" value="1" min="1" placeholder="পরিমাণ">
                 </div>
-                <button onclick="generateBill()" class="bill-btn">💰 বিল জেনারেট করুন</button>
+                <button onclick="generateBill()" class="btn btn-bill">
+                    <i class="fas fa-file-invoice-dollar"></i> বিল জেনারেট করুন
+                </button>
                 
-                <div id="currentBill" style="background: #f8f9fa; padding: 15px; border-radius: 10px; margin-top: 15px; display: none;">
-                    <h4 style="color: #333; margin-bottom: 10px;">বর্তমান বিল</h4>
-                    <p id="billDetails"></p>
-                    <p style="font-size: 20px; color: #667eea; font-weight: bold; margin-top: 10px;" id="billTotal"></p>
+                <div id="currentBill" class="current-bill" style="display: none;">
+                    <h4><i class="fas fa-receipt"></i> বর্তমান বিল</h4>
+                    <div id="billDetails" class="bill-details"></div>
+                    <div id="billTotal" class="bill-total"></div>
                 </div>
             </div>
         </div>
 
         <!-- Dashboard -->
-        <div class="dashboard">
-            <h2>📊 ড্যাশবোর্ড</h2>
-            <div class="stats-container">
-                <div class="stat-card">
-                    <h3>মোট প্রোডাক্ট</h3>
-                    <div class="stat-value" id="totalProducts">0</div>
+        <div class="card dashboard">
+            <h2 class="dashboard-title">
+                <i class="fas fa-chart-bar"></i> ড্যাশবোর্ড
+            </h2>
+            
+            <div class="stats-grid">
+                <div class="stat-card stat-card-purple">
+                    <i class="fas fa-boxes stat-icon"></i>
+                    <div>
+                        <h3>মোট প্রোডাক্ট</h3>
+                        <div class="stat-value" id="totalProducts">0</div>
+                    </div>
                 </div>
-                <div class="stat-card">
-                    <h3>মোট বিল</h3>
-                    <div class="stat-value" id="totalBills">0</div>
+                <div class="stat-card stat-card-blue">
+                    <i class="fas fa-file-invoice stat-icon"></i>
+                    <div>
+                        <h3>মোট বিল</h3>
+                        <div class="stat-value" id="totalBills">0</div>
+                    </div>
                 </div>
-                <div class="stat-card">
-                    <h3>মোট বিক্রয়</h3>
-                    <div class="stat-value" id="totalSales">০ টাকা</div>
+                <div class="stat-card stat-card-green">
+                    <i class="fas fa-chart-line stat-icon"></i>
+                    <div>
+                        <h3>মোট বিক্রয়</h3>
+                        <div class="stat-value" id="totalSales">০ টাকা</div>
+                    </div>
                 </div>
             </div>
             
-            <h3 style="margin-bottom: 15px; color: #333;">📋 বিলিং হিস্টোরি (প্রোডাক্ট, প্রাইস, পরিমাণ, মোট, লাভ)</h3>
+            <h3 class="history-title">
+                <i class="fas fa-history"></i> বিলিং হিস্টোরি
+            </h3>
             <div class="billing-history" id="billingHistory">
                 <!-- Billing history will appear here -->
             </div>
         </div>
     </div>
 
-    <script>
-        // Data Storage
-        let products = JSON.parse(localStorage.getItem('products')) || [];
-        let bills = JSON.parse(localStorage.getItem('bills')) || [];
-        let companyInfo = JSON.parse(localStorage.getItem('companyInfo')) || {
-            name: 'বিলিং সফটওয়্যার',
-            logo: 'B',
-            slogan: 'আপনার বিশ্বস্ত ব্যবসায়িক অংশীদার'
-        };
-
-        // Initialize the app
-        function init() {
-            updateCompanyDisplay();
-            displayProducts();
-            updateProductSelect();
-            updateDashboard();
-            displayBillingHistory();
-            updateDateTime();
-            setInterval(updateDateTime, 1000);
-        }
-
-        // Update date and time
-        function updateDateTime() {
-            const now = new Date();
-            const options = { weekday: 'long', year: 'numeric', month: 'long', day: 'numeric' };
-            document.getElementById('currentDate').textContent = now.toLocaleDateString('bn-BD', options);
-            document.getElementById('currentTime').textContent = now.toLocaleTimeString('bn-BD');
-        }
-
-        // Show/Hide company settings
-        function showCompanySettings() {
-            const settings = document.getElementById('companySettings');
-            if (settings.style.display === 'none' || settings.style.display === '') {
-                settings.style.display = 'block';
-                document.getElementById('companyNameInput').value = companyInfo.name;
-                document.getElementById('companyLogoInput').value = companyInfo.logo;
-                document.getElementById('companySloganInput').value = companyInfo.slogan;
-            } else {
-                settings.style.display = 'none';
-            }
-        }
-
-        // Update company information
-        function updateCompanyInfo() {
-            companyInfo.name = document.getElementById('companyNameInput').value || companyInfo.name;
-            companyInfo.logo = document.getElementById('companyLogoInput').value || companyInfo.logo;
-            companyInfo.slogan = document.getElementById('companySloganInput').value || companyInfo.slogan;
-            
-            localStorage.setItem('companyInfo', JSON.stringify(companyInfo));
-            updateCompanyDisplay();
-            document.getElementById('companySettings').style.display = 'none';
-        }
-
-        // Update company display
-        function updateCompanyDisplay() {
-            document.getElementById('companyNameDisplay').textContent = companyInfo.name;
-            document.getElementById('companyLogo').textContent = companyInfo.logo.charAt(0).toUpperCase();
-            document.getElementById('companySlogan').textContent = companyInfo.slogan;
-        }
-
-        // Add new product
-        function addProduct() {
-            const name = document.getElementById('productName').value;
-            const price = parseFloat(document.getElementById('productPrice').value);
-
-            if (name && price && !isNaN(price) && price > 0) {
-                const product = {
-                    id: Date.now(),
-                    name: name,
-                    price: price
-                };
-                
-                products.push(product);
-                localStorage.setItem('products', JSON.stringify(products));
-                
-                document.getElementById('productName').value = '';
-                document.getElementById('productPrice').value = '';
-                
-                displayProducts();
-                updateProductSelect();
-                updateDashboard();
-                
-                // Show success message
-                alert('প্রোডাক্ট সফলভাবে যোগ করা হয়েছে!');
-            } else {
-                alert('দয়া করে সঠিক প্রোডাক্টের নাম ও মূল্য দিন!');
-            }
-        }
-
-        // Display products in the list
-        function displayProducts() {
-            const productsList = document.getElementById('productsList');
-            if (products.length === 0) {
-                productsList.innerHTML = '<p style="color: #999; text-align: center;">কোনো প্রোডাক্ট যোগ করা হয়নি</p>';
-                return;
-            }
-
-            productsList.innerHTML = products.map(product => `
-                <div class="product-item">
-                    <div class="product-info">
-                        <h4>${product.name}</h4>
-                        <p>৳ ${product.price.toFixed(2)}</p>
-                    </div>
-                    <button class="delete-product" onclick="deleteProduct(${product.id})">✖</button>
-                </div>
-            `).join('');
-        }
-
-        // Delete product
-        function deleteProduct(id) {
-            if (confirm('আপনি কি এই প্রোডাক্টটি ডিলিট করতে চান?')) {
-                products = products.filter(p => p.id !== id);
-                localStorage.setItem('products', JSON.stringify(products));
-                displayProducts();
-                updateProductSelect();
-                updateDashboard();
-            }
-        }
-
-        // Update product select dropdown
-        function updateProductSelect() {
-            const select = document.getElementById('productSelect');
-            select.innerHTML = '<option value="">প্রোডাক্ট নির্বাচন করুন</option>' + 
-                products.map(p => `<option value="${p.id}" data-price="${p.price}">${p.name} - ৳${p.price}</option>`).join('');
-        }
-
-        // Generate bill
-        function generateBill() {
-            const select = document.getElementById('productSelect');
-            const quantity = parseInt(document.getElementById('quantity').value);
-            
-            if (!select.value) {
-                alert('দয়া করে একটি প্রোডাক্ট নির্বাচন করুন!');
-                return;
-            }
-
-            if (!quantity || quantity < 1) {
-                alert('দয়া করে সঠিক পরিমাণ দিন!');
-                return;
-            }
-
-            const selectedProduct = products.find(p => p.id === parseInt(select.value));
-            const total = selectedProduct.price * quantity;
-            const lave = total * 0.2; // 20% লাভ ধরে নেওয়া হলো
-            
-            const bill = {
-                id: Date.now(),
-                productId: selectedProduct.id,
-                productName: selectedProduct.name,
-                price: selectedProduct.price,
-                quantity: quantity,
-                total: total,
-                lave: lave,
-                date: new Date().toLocaleString('bn-BD')
-            };
-
-            bills.push(bill);
-            localStorage.setItem('bills', JSON.stringify(bills));
-
-            // Show current bill
-            document.getElementById('currentBill').style.display = 'block';
-            document.getElementById('billDetails').innerHTML = `
-                <strong>প্রোডাক্ট:</strong> ${selectedProduct.name}<br>
-                <strong>প্রাইস:</strong> ৳${selectedProduct.price.toFixed(2)}<br>
-                <strong>পরিমাণ:</strong> ${quantity}<br>
-                <strong>লাভ:</strong> ৳${lave.toFixed(2)}
-            `;
-            document.getElementById('billTotal').innerHTML = `মোট: ৳${total.toFixed(2)}`;
-
-            updateDashboard();
-            displayBillingHistory();
-            
-            // Reset quantity
-            document.getElementById('quantity').value = 1;
-        }
-
-        // Update dashboard statistics
-        function updateDashboard() {
-            document.getElementById('totalProducts').textContent = products.length;
-            document.getElementById('totalBills').textContent = bills.length;
-            
-            const totalSales = bills.reduce((sum, bill) => sum + bill.total, 0);
-            document.getElementById('totalSales').textContent = `৳ ${totalSales.toFixed(2)}`;
-        }
-
-        // Display billing history
-        function displayBillingHistory() {
-            const historyDiv = document.getElementById('billingHistory');
-            
-            if (bills.length === 0) {
-                historyDiv.innerHTML = '<p style="color: #999; text-align: center;">কোনো বিল জেনারেট করা হয়নি</p>';
-                return;
-            }
-
-            historyDiv.innerHTML = bills.reverse().map(bill => `
-                <div class="bill-item">
-                    <span class="product-name">${bill.productName}</span>
-                    <span class="price">৳${bill.price.toFixed(2)}</span>
-                    <span class="quantity">পরিমাণ: ${bill.quantity}</span>
-                    <span class="total">মোট: ৳${bill.total.toFixed(2)}</span>
-                    <span class="lave">লাভ: ৳${bill.lave.toFixed(2)}</span>
-                    <small style="color: #999; grid-column: 1/-1; text-align: center;">${bill.date}</small>
-                </div>
-            `).join('');
-        }
-
-        // Initialize the application
-        init();
-    </script>
+    <!-- JavaScript -->
+    <script src="js/script.js"></script>
 </body>
 </html>
+/* Import Google Fonts */
+@import url('https://fonts.googleapis.com/css2?family=Hind+Siliguri:wght@300;400;500;600;700&display=swap');
+
+/* CSS Variables */
+:root {
+    --primary-gradient: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    --secondary-gradient: linear-gradient(135deg, #00b09b, #96c93d);
+    --danger-gradient: linear-gradient(135deg, #f43b47, #453a94);
+    --warning-gradient: linear-gradient(135deg, #f9d423, #f83600);
+    
+    --primary-color: #667eea;
+    --secondary-color: #00b09b;
+    --danger-color: #ff4757;
+    --warning-color: #ffa502;
+    --dark-color: #2c3e50;
+    --light-color: #f5f6fa;
+    --white-color: #ffffff;
+    --gray-color: #95a5a6;
+    
+    --shadow-sm: 0 2px 4px rgba(0,0,0,0.1);
+    --shadow-md: 0 5px 15px rgba(0,0,0,0.1);
+    --shadow-lg: 0 10px 30px rgba(0,0,0,0.2);
+    --shadow-hover: 0 15px 40px rgba(0,0,0,0.3);
+    
+    --border-radius-sm: 8px;
+    --border-radius-md: 12px;
+    --border-radius-lg: 20px;
+    --border-radius-xl: 25px;
+    
+    --transition-fast: 0.2s ease;
+    --transition-normal: 0.3s ease;
+    --transition-slow: 0.5s ease;
+}
+
+/* Reset & Base Styles */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Hind Siliguri', sans-serif;
+}
+
+body {
+    background: var(--primary-gradient);
+    min-height: 100vh;
+    padding: 20px;
+    position: relative;
+    overflow-x: hidden;
+}
+
+/* Animated Background */
+body::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1440 320"><path fill="%23ffffff" fill-opacity="0.1" d="M0,96L48,112C96,128,192,160,288,160C384,160,480,128,576,122.7C672,117,768,139,864,154.7C960,171,1056,181,1152,165.3C1248,149,1344,107,1392,85.3L1440,64L1440,320L1392,320C1344,320,1248,320,1152,320C1056,320,960,320,864,320C768,320,672,320,576,320C480,320,384,320,288,320C192,320,96,320,48,320L0,320Z"></path></svg>');
+    background-repeat: no-repeat;
+    background-position: bottom;
+    background-size: cover;
+    opacity: 0.1;
+    pointer-events: none;
+}
+
+.container {
+    max-width: 1400px;
+    margin: 0 auto;
+    position: relative;
+    z-index: 1;
+}
+
+/* Header Styles */
+.header {
+    background: var(--white-color);
+    border-radius: var(--border-radius-lg);
+    padding: 20px 30px;
+    margin-bottom: 25px;
+    box-shadow: var(--shadow-lg);
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    gap: 20px;
+    animation: slideDown 0.5s ease;
+}
+
+@keyframes slideDown {
+    from {
+        opacity: 0;
+        transform: translateY(-30px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+.company-info {
+    display: flex;
+    align-items: center;
+    gap: 20px;
+}
+
+.logo-container {
+    width: 80px;
+    height: 80px;
+    background: var(--primary-gradient);
+    border-radius: var(--border-radius-md);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: var(--white-color);
+    font-size: 36px;
+    font-weight: bold;
+    box-shadow: var(--shadow-md);
+    transition: var(--transition-normal);
+    animation: pulse 2s infinite;
+}
+
+@keyframes pulse {
+    0% {
+        box-shadow: 0 0 0 0 rgba(102, 126, 234, 0.7);
+    }
+    70% {
+        box-shadow: 0 0 0 10px rgba(102, 126, 234, 0);
+    }
+    100% {
+        box-shadow: 0 0 0 0 rgba(102, 126, 234, 0);
+    }
+}
+
+.logo-container:hover {
+    transform: scale(1.05) rotate(5deg);
+}
+
+.company-details h1 {
+    color: var(--dark-color);
+    font-size: 28px;
+    margin-bottom: 5px;
+    font-weight: 600;
+}
+
+.company-details p {
+    color: var(--gray-color);
+    font-size: 14px;
+}
+
+.date-time {
+    background: var(--light-color);
+    padding: 12px 25px;
+    border-radius: var(--border-radius-md);
+    text-align: center;
+    box-shadow: var(--shadow-sm);
+}
+
+.date-time .date {
+    color: var(--dark-color);
+    font-weight: 500;
+    font-size: 16px;
+}
+
+.date-time .time {
+    color: var(--primary-color);
+    font-size: 24px;
+    font-weight: bold;
+    margin-top: 5px;
+}
+
+/* Settings Button */
+.settings-btn-container {
+    text-align: right;
+    margin-bottom: 15px;
+}
+
+.settings-btn {
+    background: var(--white-color);
+    border: none;
+    padding: 12px 25px;
+    border-radius: var(--border-radius-md);
+    cursor: pointer;
+    box-shadow: var(--shadow-md);
+    font-size: 16px;
+    font-weight: 500;
+    color: var(--dark-color);
+    transition: var(--transition-normal);
+}
+
+.settings-btn:hover {
+    transform: translateY(-2px);
+    box-shadow: var(--shadow-hover);
+    background: var(--primary-gradient);
+    color: var(--white-color);
+}
+
+.settings-btn i {
+    margin-right: 8px;
+}
+
+/* Modal Styles */
+.settings-modal {
+    background: var(--white-color);
+    border-radius: var(--border-radius-lg);
+    padding: 25px;
+    margin-bottom: 25px;
+    box-shadow: var(--shadow-lg);
+    animation: fadeIn 0.3s ease;
+}
+
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+        transform: scale(0.95);
+    }
+    to {
+        opacity: 1;
+        transform: scale(1);
+    }
+}
+
+.modal-content h3 {
+    color: var(--dark-color);
+    margin-bottom: 20px;
+    font-size: 22px;
+}
+
+.modal-content h3 i {
+    margin-right: 10px;
+    color: var(--primary-color);
+}
+
+/* Main Content Grid */
+.main-content {
+    display: grid;
+    grid-template-columns: 1fr 1.2fr;
+    gap: 25px;
+    margin-bottom: 25px;
+}
+
+/* Card Styles */
+.card {
+    background: var(--white-color);
+    border-radius: var(--border-radius-lg);
+    padding: 25px;
+    box-shadow: var(--shadow-md);
+    transition: var(--transition-normal);
+    animation: fadeInUp 0.5s ease;
+}
+
+@keyframes fadeInUp {
+    from {
+        opacity: 0;
+        transform: translateY(20px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+.card:hover {
+    transform: translateY(-5px);
+    box-shadow: var(--shadow-hover);
+}
+
+.section-title {
+    color: var(--dark-color);
+    font-size: 22px;
+    margin-bottom: 20px;
+    padding-bottom: 10px;
+    border-bottom: 3px solid var(--primary-color);
+    display: inline-block;
+}
+
+.section-title i {
+    margin-right: 10px;
+    color: var(--primary-color);
+}
+
+/* Input Group */
+.input-group {
+    margin-bottom: 20px;
+}
+
+.input-group label {
+    display: block;
+    color: var(--dark-color);
+    margin-bottom: 8px;
+    font-weight: 500;
+}
+
+.input-group label i {
+    margin-right: 8px;
+    color: var(--primary-color);
+}
+
+.input-group input {
+    width: 100%;
+    padding: 12px 15px;
+    border: 2px solid #e0e0e0;
+    border-radius: var(--border-radius-md);
+    font-size: 15px;
+    transition: var(--transition-fast);
+}
+
+.input-group input:focus {
+    outline: none;
+    border-color: var(--primary-color);
+    box-shadow: 0 0 0 3px rgba(102, 126, 234, 0.1);
+}
+
+/* Button Styles */
+.btn {
+    padding: 14px 30px;
+    border: none;
+    border-radius: var(--border-radius-md);
+    font-size: 16px;
+    font-weight: 600;
+    cursor: pointer;
+    transition: var(--transition-normal);
+    margin-right: 10px;
+    margin-bottom: 10px;
+}
+
+.btn i {
+    margin-right: 8px;
+}
+
+.btn-primary {
+    background: var(--primary-gradient);
+    color: var(--white-color);
+    width: 100%;
+}
+
+.btn-primary:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 10px 25px rgba(102, 126, 234, 0.4);
+}
+
+.btn-bill {
+    background: var(--secondary-gradient);
+    color: var(--white-color);
+    width: 100%;
+}
+
+.btn-bill:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 10px 25px rgba(0, 176, 155, 0.4);
+}
+
+.btn-success {
+    background: var(--secondary-gradient);
+    color: var(--white-color);
+}
+
+.btn-secondary {
+    background: var(--gray-color);
+    color: var(--white-color);
+}
+
+.btn-success:hover, .btn-secondary:hover {
+    transform: translateY(-2px);
+    box-shadow: var(--shadow-md);
+}
+
+/* Products List */
+.products-list {
+    margin-top: 30px;
+    max-height: 300px;
+    overflow-y: auto;
+}
+
+.product-item {
+    background: var(--light-color);
+    padding: 15px;
+    border-radius: var(--border-radius-md);
+    margin-bottom: 10px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    border-left: 5px solid var(--primary-color);
+    transition: var(--transition-fast);
+    animation: slideIn 0.3s ease;
+}
+
+@keyframes slideIn {
+    from {
+        opacity: 0;
+        transform: translateX(-20px);
+    }
+    to {
+        opacity: 1;
+        transform: translateX(0);
+    }
+}
+
+.product-item:hover {
+    transform: translateX(5px);
+    background: #f0f2f5;
+}
+
+.product-info h4 {
+    color: var(--dark-color);
+    margin-bottom: 5px;
+}
+
+.product-info p {
+    color: var(--primary-color);
+    font-weight: bold;
+    font-size: 18px;
+}
+
+.delete-product {
+    background: var(--danger-gradient);
+    color: var(--white-color);
+    border: none;
+    width: 35px;
+    height: 35px;
+    border-radius: var(--border-radius-sm);
+    cursor: pointer;
+    font-size: 18px;
+    transition: var(--transition-fast);
+}
+
+.delete-product:hover {
+    transform: scale(1.1);
+}
+
+/* Product Select */
+.product-select {
+    width: 100%;
+    padding: 12px 15px;
+    border: 2px solid #e0e0e0;
+    border-radius: var(--border-radius-md);
+    margin-bottom: 15px;
+    font-size: 15px;
+    background: var(--white-color);
+    cursor: pointer;
+}
+
+.product-select:focus {
+    outline: none;
+    border-color: var(--primary-color);
+}
+
+/* Current Bill */
+.current-bill {
+    background: var(--light-color);
+    padding: 20px;
+    border-radius: var(--border-radius-md);
+    margin-top: 20px;
+    animation: fadeIn 0.3s ease;
+}
+
+.current-bill h4 {
+    color: var(--dark-color);
+    margin-bottom: 15px;
+    font-size: 18px;
+}
+
+.current-bill h4 i {
+    margin-right: 8px;
+    color: var(--primary-color);
+}
+
+.bill-details {
+    line-height: 1.8;
+    color: var(--dark-color);
+}
+
+.bill-total {
+    font-size: 22px;
+    color: var(--primary-color);
+    font-weight: bold;
+    margin-top: 15px;
+    padding-top: 15px;
+    border-top: 2px dashed var(--gray-color);
+}
+
+/* Dashboard */
+.dashboard {
+    margin-top: 25px;
+}
+
+.dashboard-title {
+    color: var(--dark-color);
+    font-size: 24px;
+    margin-bottom: 25px;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.dashboard-title i {
+    color: var(--primary-color);
+}
+
+/* Stats Grid */
+.stats-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 20px;
+    margin-bottom: 30px;
+}
+
+.stat-card {
+    padding: 25px;
+    border-radius: var(--border-radius-md);
+    color: var(--white-color);
+    display: flex;
+    align-items: center;
+    gap: 15px;
+    transition: var(--transition-normal);
+    animation: fadeIn 0.5s ease;
+}
+
+.stat-card:hover {
+    transform: translateY(-5px) scale(1.02);
+}
+
+.stat-card-purple {
+    background: var(--primary-gradient);
+}
+
+.stat-card-blue {
+    background: linear-gradient(135deg, #2193b0, #6dd5ed);
+}
+
+.stat-card-green {
+    background: var(--secondary-gradient);
+}
+
+.stat-icon {
+    font-size: 40px;
+    opacity: 0.8;
+}
+
+.stat-card h3 {
+    font-size: 16px;
+    margin-bottom: 8px;
+    opacity: 0.9;
+}
+
+.stat-value {
+    font-size: 28px;
+    font-weight: bold;
+}
+
+/* History Section */
+.history-title {
+    color: var(--dark-color);
+    margin: 25px 0 15px;
+    font-size: 20px;
+}
+
+.history-title i {
+    margin-right: 10px;
+    color: var(--primary-color);
+}
+
+.billing-history {
+    max-height: 350px;
+    overflow-y: auto;
+    padding-right: 10px;
+}
+
+.bill-item {
+    background: var(--light-color);
+    padding: 18px;
+    border-radius: var(--border-radius-md);
+    margin-bottom: 12px;
+    display: grid;
+    grid-template-columns: 2fr 1fr 1fr 1fr;
+    gap: 10px;
+    align-items: center;
+    transition: var(--transition-fast);
+    animation: slideIn 0.3s ease;
+    border-left: 4px solid var(--secondary-color);
+}
+
+.bill-item:hover {
+    transform: translateX(5px);
+    background: #f0f2f5;
+}
+
+.bill-item .product-name {
+    font-weight: 600;
+    color: var(--dark-color);
+}
+
+.bill-item .price {
+    color: var(--primary-color);
+    font-weight: bold;
+}
+
+.bill-item .quantity {
+    color: var(--gray-color);
+}
+
+.bill-item .total {
+    color: var(--secondary-color);
+    font-weight: bold;
+}
+
+.bill-item .lave {
+    color: var(--warning-color);
+    font-weight: bold;
+}
+
+/* Scrollbar Styling */
+::-webkit-scrollbar {
+    width: 8px;
+}
+
+::-webkit-scrollbar-track {
+    background: var(--light-color);
+    border-radius: 10px;
+}
+
+::-webkit-scrollbar-thumb {
+    background: var(--primary-gradient);
+    border-radius: 10px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+    background: var(--primary-color);
+}
+
+/* Responsive Design */
+@media (max-width: 1024px) {
+    .main-content {
+        grid-template-columns: 1fr;
+    }
+    
+    .stats-grid {
+        grid-template-columns: repeat(2, 1fr);
+    }
+}
+
+@media (max-width: 768px) {
+    .header {
+        flex-direction: column;
+        text-align: center;
+    }
+    
+    .company-info {
+        flex-direction: column;
+    }
+    
+    .stats-grid {
+        grid-template-columns: 1fr;
+    }
+    
+    .bill-item {
+        grid-template-columns: 1fr;
+        text-align: center;
+        gap: 8px;
+    }
+    
+    .date-time {
+        width: 100%;
+    }
+    
+    .btn {
+        width: 100%;
+        margin-right: 0;
+    }
+}
+
+@media (max-width: 480px) {
+    body {
+        padding: 10px;
+    }
+    
+    .header, .card {
+        padding: 15px;
+    }
+    
+    .logo-container {
+        width: 60px;
+        height: 60px;
+        font-size: 28px;
+    }
+    
+    .company-details h1 {
+        font-size: 22px;
+    }
+    
+    .stat-value {
+        font-size: 22px;
+    }
+}
+
+/* Loading Animation */
+.loading {
+    display: inline-block;
+    width: 20px;
+    height: 20px;
+    border: 3px solid var(--light-color);
+    border-radius: 50%;
+    border-top-color: var(--primary-color);
+    animation: spin 1s ease-in-out infinite;
+}
+
+@keyframes spin {
+    to { transform: rotate(360deg); }
+}
+
+/* Print Styles */
+@media print {
+    .settings-btn-container,
+    .add-btn,
+    .bill-btn,
+    .delete-product {
+        display: none !important;
+    }
+    
+    .card {
+        box-shadow: none;
+        border: 1px solid #ddd;
+    }
+}
